@@ -8,7 +8,7 @@ import TopNav from "./components/topNav";
 import { dark } from "@clerk/themes";
 
 export const metadata: Metadata = {
-  title: "T3Gallery",
+  title: "PixieBox",
   description: "A simple image gallery built with the T3 Stack",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
