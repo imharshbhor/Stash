@@ -7,15 +7,15 @@ import { ThemeToggle } from "../ThemeProvider/ThemeToggleBtn";
 
 export default function TopNav() {
   return (
-    <nav className="fixed left-0 right-0 top-0 flex items-center justify-between p-6 px-36 shadow-sm backdrop-blur-sm dark:bg-black/50 dark:text-white">
+    <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between p-6 shadow-sm backdrop-blur-lg dark:bg-black/70 dark:text-white sm:px-36">
       <Link href="/" className="text-2xl font-bold hover:text-gray-300">
         Stash
       </Link>
-      <SignedOut>
-        <SignInButton />
-      </SignedOut>
       <div className="flex flex-row gap-3">
         <ThemeToggle />
+        <SignedOut>
+          <SignInButton />
+        </SignedOut>
         <SignedIn>
           <UserButton />
         </SignedIn>

@@ -37,12 +37,11 @@ export default function ImageGallery() {
   return (
     <main className="min-h-screen p-5 pt-20 dark:bg-black dark:text-white">
       <ImageList images={images} onImageClick={openDialog} />
-
       <UploadButton
         endpoint="imageUploader"
         onClientUploadComplete={(res) => {
           console.log("Files uploaded: ", res);
-          
+
           const loadImages = async () => {
             try {
               const response = await fetch("/api/images");

@@ -1,8 +1,7 @@
 "use client";
-
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ImageType } from "@/types/image";
+import { type ImageType } from "~/lib/image";
 
 interface ImageListProps {
   images: ImageType[];
@@ -11,27 +10,25 @@ interface ImageListProps {
 
 export default function ImageList({ images, onImageClick }: ImageListProps) {
   return (
-    <div className="flex flex-wrap justify-center gap-4 py-5">
+    <div className="grid gap-4 p-4 md:grid-cols-3 lg:grid-cols-4">
       {images.map((image, index) => (
         <motion.div
-          key={image.imgId || index}
+          key={image.id || index}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="group relative transition duration-500 ease-in-out"
+          className="relative aspect-square cursor-pointer overflow-hidden rounded-lg"
+          onClick={() => onImageClick(image)}
         >
-          <span className="absolute left-2 top-2 z-10 rounded bg-black bg-opacity-50 p-1 text-sm text-white">
-            {image.title}
-          </span>
           <Image
             src={image.url}
             alt={image.title}
-            width={400}
-            height={400}
-            className="cursor-pointer rounded-lg shadow-inner"
-            onClick={() => onImageClick(image)}
-            style={{ width: "auto", height: "auto" }}
-            priority
+            fill
+            className="object-cover transition-transform duration-300 hover:scale-110"
+            priority={index < 4}
           />
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-center text-white">
+            {image.title.split(".")[0]}
+          </div>
         </motion.div>
       ))}
     </div>
