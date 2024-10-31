@@ -1,9 +1,9 @@
-import Gallery from "./gallery/page";
+import ImageGallery from "./components/Gallery/ImageGallery";
 
 export default function Home() {
   return (
     <>
-      <Gallery />
+      <ImageGallery />
     </>
   );
 }

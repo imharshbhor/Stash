@@ -8,7 +8,7 @@ export async function GET() {
     const images = await Image.find({});
     return NextResponse.json(images, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: 'Failed to load images' }, { status: 500 });
+    return NextResponse.json({ message: 'Failed to load images',error }, { status: 500 });
   }
 }
 
@@ -20,6 +20,6 @@ export async function POST(request: Request) {
     const savedImage = await newImage.save();
     return NextResponse.json(savedImage, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ message: 'Failed to save image' }, { status: 400 });
+    return NextResponse.json({ message: 'Failed to save image',error }, { status: 400 });
   }
 }

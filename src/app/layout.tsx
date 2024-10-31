@@ -1,11 +1,13 @@
 import "~/styles/globals.css";
+import "@uploadthing/react/styles.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
 
 import { Inter } from "next/font/google";
 import { type Metadata } from "next";
-import TopNav from "./components/topNav";
+import TopNav from "./components/Navbar/topNav";
 import { dark } from "@clerk/themes";
+import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Stash",
@@ -21,13 +23,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <ClerkProvider appearance={{ baseTheme: dark }}>
-      <html lang="en">
-        <body className={inter.className}>
-          <TopNav />
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <ThemeProvider>
+        <ClerkProvider appearance={{ baseTheme: dark }}>
+          <body className={inter.className}>
+            <TopNav />
+            {children}
+          </body>
+        </ClerkProvider>
+      </ThemeProvider>
+    </html>
   );
 }
