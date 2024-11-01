@@ -26,7 +26,8 @@ export const ourFileRouter = {
 
       // Code to post image data to the database
       try {
-        const response = await fetch('http://localhost:3000/api/images', {
+        const apiUrl = process.env.NODE_ENV === 'production' ? 'https://stash-six.vercel.app/api/images' : 'http://localhost:3000/api/images';
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
