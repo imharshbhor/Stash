@@ -1,5 +1,5 @@
 import ImageGallery from "./components/Gallery/ImageGallery";
-import SignInPrompt from "./components/signInPrompt/page";
+import SignInPrompt from "./components/SignInPrompt/page";
 import { auth } from "@clerk/nextjs/server";
 
 export default async function Home() {

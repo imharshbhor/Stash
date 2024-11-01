@@ -1,13 +1,17 @@
 import "~/styles/globals.css";
 
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { extractRouterConfig } from "uploadthing/server";
+import { ourFileRouter } from "~/app/api/uploadthing/core";
+
 import { ClerkProvider } from "@clerk/nextjs";
 
 import { Inter } from "next/font/google";
 import { type Metadata } from "next";
 import TopNav from "./components/Navbar/topNav";
-import { dark } from "@clerk/themes";
 import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
-import Backdrop from "~/components/ui/backdrop";
+
+// import Backdrop from "~/components/ui/backdrop";
 
 export const metadata: Metadata = {
   title: "Stash",
@@ -25,9 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ThemeProvider>
-        <ClerkProvider appearance={{ baseTheme: dark }}>
+        <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+        <ClerkProvider>
           <body className={inter.className}>
-            <Backdrop />
+            {/* <Backdrop /> */}
             <TopNav />
             {children}
           </body>

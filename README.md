@@ -1,5 +1,6 @@
 # TODO Tasks
 
-- [x] Create a Dark / Light mode switch.
-- [x] Add in smooth animations on image hover and open close.
-- [x] Add in upload thing button to upload images via their api keys.
+- [ ] theme the uploadthing btn.
+- [X] fix the backdrop.
+- [ ] fix the image loading issue on prod.
+- [ ] follow the theo tutorial.

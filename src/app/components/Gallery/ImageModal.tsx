@@ -35,6 +35,7 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
             layout="fill"
             objectFit="contain"
             className="h-full w-full"
+            quality={100}
             priority
           />
           <button

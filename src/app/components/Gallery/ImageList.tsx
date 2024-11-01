@@ -51,6 +51,7 @@ export default function ImageList({ images, onImageClick }: ImageListProps) {
                     height={height}
                     layout="responsive"
                     objectFit="cover"
+                    quality={100}
                     className="rounded-xl transition-transform duration-300 hover:scale-110"
                     priority={index < 4}
                   />

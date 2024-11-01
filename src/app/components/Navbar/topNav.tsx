@@ -2,9 +2,19 @@
 
 import Link from "next/link";
 
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  SignIn,
+  SignInButton,
+  SignInWithMetamaskButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import { ThemeToggle } from "../ThemeProvider/ThemeToggleBtn";
 import SparklesText from "~/components/ui/sparkles-text";
+import PulsatingButton from "~/components/ui/pulsating-button";
+import { RainbowButton } from "~/components/ui/rainbow-button";
+import ShimmerButton from "~/components/ui/shimmer-button";
 
 export default function TopNav() {
   return (
@@ -17,15 +27,15 @@ export default function TopNav() {
           sparklesCount={5}
         />
       </Link>
-      <div className="flex flex-row gap-3">
-        <ThemeToggle />
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-      </div>
+      <ThemeToggle />
+      <SignedOut>
+        <SignInButton mode="modal">
+          <ShimmerButton className="text-white">Sign In</ShimmerButton>
+        </SignInButton>
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
     </nav>
   );
 }
