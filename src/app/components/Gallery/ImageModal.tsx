@@ -17,7 +17,8 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-3xl p-3 sm:p-0"
+      onClick={onClose}
     >
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
@@ -25,12 +26,13 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
         exit={{ scale: 0.8, opacity: 0 }}
         transition={{ duration: 0.3 }}
         className="relative"
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute right-3 top-2 z-10 text-white"
+          className="absolute right-3 top-3 z-10 text-white"
         >
-          <Minimize className="transition-transform duration-500 ease-in-out hover:scale-75" />
+          <Minimize className="transition-transform duration-500 ease-in-out hover:scale-90" />
         </button>
         <Image
           src={image.url}

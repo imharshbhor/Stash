@@ -7,6 +7,7 @@ import ImageList from "./ImageList";
 import ImageModal from "./ImageModal";
 import { type ImageType } from "~/lib/image";
 import { UploadButton } from "~/utils/uploadthing";
+import ShimmerButton from "~/components/ui/shimmer-button";
 
 export default function ImageGallery() {
   const [selectedImage, setSelectedImage] = useState<ImageType | null>(null);
@@ -35,10 +36,22 @@ export default function ImageGallery() {
   };
 
   return (
-    <main className="min-h-screen p-5 pt-20 dark:bg-black dark:text-white">
+    <main className="relative min-h-screen overflow-hidden p-5 pt-24 dark:bg-black dark:text-white">
       <ImageList images={images} onImageClick={openDialog} />
       <UploadButton
+        className="fixed bottom-0 left-0 right-0 z-50 m-5 flex flex-row justify-center"
         endpoint="imageUploader"
+        appearance={{
+          allowedContent: {
+            display: "none",
+          },
+        }}
+        content={{
+          button({ ready }) {
+            if (ready) return <div>Upload stuff</div>;
+            return "Getting ready...";
+          },
+        }}
         onClientUploadComplete={(res) => {
           console.log("Files uploaded: ", res);
 
@@ -57,7 +70,6 @@ export default function ImageGallery() {
           console.log(`ERROR! ${error.message}`);
         }}
       />
-
       <AnimatePresence>
         {selectedImage && (
           <ImageModal image={selectedImage} onClose={closeDialog} />

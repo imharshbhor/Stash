@@ -1,5 +1,4 @@
 import "~/styles/globals.css";
-import "@uploadthing/react/styles.css";
 
 import { ClerkProvider } from "@clerk/nextjs";
 
@@ -8,6 +7,7 @@ import { type Metadata } from "next";
 import TopNav from "./components/Navbar/topNav";
 import { dark } from "@clerk/themes";
 import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
+import Backdrop from "~/components/ui/backdrop";
 
 export const metadata: Metadata = {
   title: "Stash",
@@ -27,6 +27,7 @@ export default function RootLayout({
       <ThemeProvider>
         <ClerkProvider appearance={{ baseTheme: dark }}>
           <body className={inter.className}>
+            <Backdrop />
             <TopNav />
             {children}
           </body>
