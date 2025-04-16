@@ -23,7 +23,7 @@ export default function SignInPrompt() {
         refresh
       />
       <TypingAnimation
-        className="text-1xl font-bold sm:text-4xl"
+        className="text-1xl font-bold sm:text-4xl text-primary"
         text="Please Sign In to Upload Stuff."
         duration={100}
       />

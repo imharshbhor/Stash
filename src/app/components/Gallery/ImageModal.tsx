@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/legacy/image";
-import { motion } from "framer-motion";
 import { Minimize } from "lucide-react";
 import { type ImageType } from "~/lib/image";
 
@@ -12,19 +11,11 @@ interface ImageModalProps {
 
 export default function ImageModal({ image, onClose }: ImageModalProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-3xl"
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black"
       onClick={onClose}
     >
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.8, opacity: 0 }}
-        transition={{ duration: 0.3 }}
+      <div
         className="relative h-screen w-screen"
         onClick={(e) => e.stopPropagation()}
       >
@@ -45,7 +36,7 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
             <Minimize className="transition-transform duration-500 ease-in-out hover:scale-90" />
           </button>
         </div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }
