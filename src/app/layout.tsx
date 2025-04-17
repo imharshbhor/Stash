@@ -16,7 +16,7 @@ import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
 export const metadata: Metadata = {
   title: "Stash",
   description: "A simple image gallery built with the T3 Stack",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+//   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 const inter = Inter({

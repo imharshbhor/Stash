@@ -80,13 +80,14 @@ export default function ImageGallery() {
       ) : images.length === 0 ? (
         <div className="flex h-[70vh] flex-col items-center justify-center">
           <Image
+            loading="eager"
             width={400}
             height={400}
             src={empty}
             quality={100}
             alt="Empty gallery"
           />
-          <h2 className="mb-1 text-2xl font-semibold text-primary">Empty Gallery...</h2>
+          <h2 className="mb-1 text-2xl font-semibold text-primary mt-[-35px]">Empty Gallery...</h2>
           <p className="text-primary/70">
             Upload some images!
           </p>
